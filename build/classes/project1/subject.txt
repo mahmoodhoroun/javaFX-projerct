@@ -1,0 +1,4 @@
+Subject_Name=Math
+ The teacher name who teaches it =[asd, Arood]
+ The students who study it =[asd, Arood, ahmed, ahmed, Arood]
+=================================

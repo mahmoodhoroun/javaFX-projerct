@@ -1,0 +1,2 @@
+Employee_name=mahmood, Employee_id=120211455, Employee_Password=123, Employee_phone_number=0599308676, Employee_Email=mahmood@gmail.com, Employee_Address=adsd, Employee_basicSalary=123.0, liveExpensive=0.0
+Employee_name=Abood, Employee_id=10, Employee_Password=2003, Employee_phone_number=0599467875, Employee_Email=Abood@gmail.com, Employee_Address=gaza_Nusirat, Employee_basicSalary=5039.5, liveExpensive=0.0

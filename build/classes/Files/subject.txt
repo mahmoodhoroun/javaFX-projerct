@@ -1,0 +1,4 @@
+Subject_Name=math
+ The teacher name who teaches it =[Ali]
+ The students who study it =[Ali, sameer]
+====================================================

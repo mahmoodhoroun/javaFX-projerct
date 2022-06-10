@@ -1,0 +1,1 @@
+name=omar, id=0147, phone_number=059874563, Total Salary=3490.748, classcount=147, Address=nusirat, Email=oamar@gmail.com, basicSalary=500.68, liveExpensive=50.068000000000005, Password=0147
