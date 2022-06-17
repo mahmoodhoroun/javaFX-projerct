@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class file {
 
     public static String read_stu() throws FileNotFoundException {
-        File f = new File("C:\\Users\\Abood_Yasen\\Documents\\NetBeansProjects\\Progect_Java\\src\\project_java\\src\\Files\\student.txt");
+        File f = new File("src\\Files\\student.txt");
         Scanner S = new Scanner(f);
         String txt = "";
         while (S.hasNextLine()) {
@@ -21,7 +21,7 @@ public class file {
     }
 
     public static String read_tesh() throws FileNotFoundException {
-        File f = new File("C:\\Users\\Abood_Yasen\\Documents\\NetBeansProjects\\Progect_Java\\src\\project_java\\src\\Files\\teaher.txt");
+        File f = new File("src\\Files\\teaher.txt");
         Scanner S = new Scanner(f);
         String txt = "";
         while (S.hasNextLine()) {
@@ -32,7 +32,7 @@ public class file {
     }
 
     public static String read_sub() throws FileNotFoundException {
-        File f = new File("C:\\Users\\Abood_Yasen\\Documents\\NetBeansProjects\\Progect_Java\\src\\project_java\\src\\Files\\subject.txt");
+        File f = new File("src\\Files\\subject.txt");
         Scanner S = new Scanner(f);
         String txt = "";
         while (S.hasNextLine()) {
@@ -43,7 +43,7 @@ public class file {
     }
 
     public static String read_Maneger() throws FileNotFoundException {
-        File f = new File("/home/mahmood/NetBeansProjects/GUI_project/project_java/src/Files/Maneger.txt");
+        File f = new File("src\\Files\\Maneger.txt");
         Scanner S = new Scanner(f);
         String txt = "";
         while (S.hasNextLine()) {
@@ -54,7 +54,7 @@ public class file {
     }
 
     public static String read_Employee() throws FileNotFoundException {
-        File f = new File("/home/mahmood/NetBeansProjects/GUI_project/project_java/src/Files/Employee.txt");
+        File f = new File("src\\Files\\Employee.txt");
         Scanner S = new Scanner(f);
         String txt = "";
         while (S.hasNextLine()) {
@@ -67,7 +67,7 @@ public class file {
 //=================================================================================================================  
 
     public static void write_stu(String in) throws FileNotFoundException {
-        File f = new File("C:\\Users\\Abood_Yasen\\Documents\\NetBeansProjects\\Progect_Java\\src\\project_java\\src\\Files\\student.txt");
+        File f = new File("src\\Files\\student.txt");
         String txt = read_stu();
         PrintStream P = new PrintStream(f);
         P.print(txt + in);
@@ -75,7 +75,7 @@ public class file {
     }
 
     public static void write_tesh(String in) throws FileNotFoundException {
-        File f = new File("C:\\Users\\Abood_Yasen\\Documents\\NetBeansProjects\\Progect_Java\\src\\project_java\\src\\Files\\teaher.txt");
+        File f = new File("src\\Files\\teaher.txt");
         String txt = read_tesh();
         PrintStream P = new PrintStream(f);
         P.print(txt + in);
@@ -83,7 +83,7 @@ public class file {
     }
 
     public static void write_sub(String in) throws FileNotFoundException {
-        File f = new File("C:\\Users\\Abood_Yasen\\Documents\\NetBeansProjects\\Progect_Java\\src\\project_java\\src\\Files\\subject.txt");
+        File f = new File("src\\Files\\subject.txt");
         String txt = read_sub();
         PrintStream P = new PrintStream(f);
         P.print(txt + in);
@@ -91,7 +91,7 @@ public class file {
     }
 
     public static void write_Maneger(String in) throws FileNotFoundException {
-        File f = new File("/home/mahmood/NetBeansProjects/GUI_project/project_java/src/Files/Maneger.txt");
+        File f = new File("src\\Files\\Maneger.txt");
         String txt = read_Maneger();
         PrintStream P = new PrintStream(f);
         P.print(txt + in);
@@ -99,7 +99,7 @@ public class file {
     }
 
     public static void write_Employee(String in) throws FileNotFoundException {
-        File f = new File("/home/mahmood/NetBeansProjects/GUI_project/project_java/src/Files/Employee.txt");
+        File f = new File("src\\Files\\Employee.txt");
         String txt = read_Employee();
         PrintStream P = new PrintStream(f);
         P.print(txt + in);
@@ -218,6 +218,19 @@ public class file {
         }
         return x;
     }
+    public static boolean search_E_B(String password) throws FileNotFoundException {
+        boolean x = false;
+        if (line(password, 2) == (null)) {
+            x = false;
+        } else {
+
+            String word = line(password, 2).split(",")[2].split("=")[1];
+            if (password.equals(word)) {
+                x = true;
+            }
+        }
+        return x;
+    }
     public static boolean search_M_id(String id) throws FileNotFoundException {
         boolean x = false;
         if (lineM(id, 1) == (null)) {
@@ -245,19 +258,7 @@ public class file {
         return x;
     }
 
-    public static boolean search_E_P(String password) throws FileNotFoundException {
-        boolean x = false;
-        if (line(password, 2) == (null)) {
-            x = false;
-        } else {
 
-            String word = line(password, 2).split(",")[2].split("=")[1];
-            if (password.equals(word)) {
-                x = true;
-            }
-        }
-        return x;
-    }
 
  
     public static int L_N(String id) throws FileNotFoundException{
@@ -293,7 +294,7 @@ public class file {
       
         int num2 = 1;
                 String line = S1.nextLine();
-                File f = new File("/home/mahmood/NetBeansProjects/GUI_project/project_java/src/Files/Employee.txt");
+                File f = new File("src\\Files\\Employee.txt");
                 String txt ="";
                 Scanner s = new Scanner(f);
                 while(s.hasNextLine()){
@@ -308,7 +309,39 @@ public class file {
                 }
                 PrintStream P = new PrintStream(f);
                      P.print(txt );}
-       
+    
+    public static boolean password(String id , String password) throws FileNotFoundException {
+        boolean b = false;
+           String Emp = file.read_Employee();
+        Scanner S = new Scanner(Emp);
+        Scanner S1 = new Scanner(Emp);
+        int num1 = L_N(id);
+      
+        int num2 = 1;
+                String line = S1.nextLine();
+                File f = new File("src\\Files\\Employee.txt");
+                String txt ="";
+                Scanner s = new Scanner(f);
+                while(s.hasNextLine()){
+            if (num1 == num2) {
+                String pass =s.nextLine().split(",")[2].split("=")[1];
+                if(pass.equals(password)){
+                    b=true;
+                }
+                break;
+            }
+            s.nextLine();
+            num2++;
+         
+               }
+       return b;
+    }
+    
+    
+    public static void main(String[] args) throws FileNotFoundException {
+//        System.out.println( password("1201","2003"));
+                System.out.println(search_E_id("1"));
+    }
     
 }
 

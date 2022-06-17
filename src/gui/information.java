@@ -232,7 +232,7 @@ public class information extends javax.swing.JFrame {
 
         new Control().setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
@@ -240,40 +240,50 @@ public class information extends javax.swing.JFrame {
     }//GEN-LAST:event_EditActionPerformed
 
     private void EditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditMouseClicked
-        
-        for (int i = 0; i <7; i++) {
+
+        for (int i = 0; i < 7; i++) {
             t.get(i).setEditable(true);
             t.get(i).setBackground(Color.WHITE);
         }
-        
+
         Edit.setVisible(false);
         save.setVisible(true);
-        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_EditMouseClicked
-    public  boolean isEmbty(){
+    public boolean isEmbty() {
         boolean b = false;
-        for (int i = 0; i <7; i++) {
-            if(t.get(i).getText().isEmpty())
-                b= true;
+        for (int i = 0; i < 7; i++) {
+            if (t.get(i).getText().isEmpty()) {
+                b = true;
+            }
         }
         return b;
     }
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
         // TODO add your handling code here:
-        if(isEmbty()){
-                        JOptionPane.showMessageDialog(null, "There are empty fields");
+        if (isEmbty()) {
+            JOptionPane.showMessageDialog(null, "There are empty fields");
 
-        }else{
+        } else {
             try {
-                if(file.search_E_id(t.get(1).getText())){
+                if(t.get(1).getText().equals(Login_Interface.id.getText())){
+                    
+                    School.signUp_Employee(t.get(0).getText(), Login_Interface.id.getText(), t.get(5).getText(), t.get(3).getText(), t.get(4).getText(), t.get(6).getText(), t.get(2).getText());
+                    file.move(Login_Interface.id.getText());
+                }
+                if ( !(t.get(1).getText().equals(Login_Interface.id.getText())) & file.search_E_id(t.get(1).getText())) {
                     JOptionPane.showMessageDialog(null, "This id has been used");
-                }else{
+                    t.get(1).setText(Login_Interface.id.getText());
+                    School.signUp_Employee(t.get(0).getText(), Login_Interface.id.getText(), t.get(5).getText(), t.get(3).getText(), t.get(4).getText(), t.get(6).getText(), t.get(2).getText());
+                    file.move(Login_Interface.id.getText());
+                   
+                } 
+                if (!( file.search_E_id(t.get(1).getText()))) {
 
                     School.signUp_Employee(t.get(0).getText(), t.get(1).getText(), t.get(5).getText(), t.get(3).getText(), t.get(4).getText(), t.get(6).getText(), t.get(2).getText());
-                                file.move(Login_Interface.id.getText());
-                                Login_Interface.id=t.get(1);
+                    file.move(Login_Interface.id.getText());
+                    Login_Interface.id.setText(t.get(1).getText());
                 }
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(information.class.getName()).log(Level.SEVERE, null, ex);
@@ -282,15 +292,16 @@ public class information extends javax.swing.JFrame {
         save.setVisible(false);
         Edit.setVisible(true);
         for (int i = 0; i < 7; i++) {
-              t.get(i).setBackground(Color.cyan);
+            t.get(i).setBackground(Color.cyan);
+                    t.get(i).setEditable(false);
+
 
         }
-        
+
     }//GEN-LAST:event_saveMouseClicked
 
-
-    public  void run() throws FileNotFoundException {
-               int  hight = 22;
+    public void run() throws FileNotFoundException {
+        int hight = 22;
         this.setVisible(true);
         int h = 100;
 
@@ -306,18 +317,15 @@ public class information extends javax.swing.JFrame {
             h += 45;
         }
         for (int i = 0; i < 7; i++) {
-            
-       t.get(i).setText(file.line(Login_Interface.id.getText(), 1).split(",")[i].split("=")[1]);
+
+            t.get(i).setText(file.line(Login_Interface.id.getText(), 1).split(",")[i].split("=")[1]);
         }
         save.setVisible(false);
 
     }
 
     public static void main(String args[]) throws FileNotFoundException {
-    
-        
-        
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

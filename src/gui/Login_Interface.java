@@ -5,6 +5,7 @@
 package gui;
 
 import code.file;
+import static com.oracle.webservices.internal.api.databinding.DatabindingModeFeature.ID;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -124,6 +125,11 @@ public class Login_Interface extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(184, 79, 84));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         jLabel6.setText("   sign in");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -309,25 +315,28 @@ public class Login_Interface extends javax.swing.JFrame {
     public void SignIn() {
         try {
             boolean user = file.search_E_id(id.getText());
-            boolean pass = file.search_E_P(password.getText());
+            boolean pass = file.password(id.getText(),password.getText());
+            boolean pas = file.search_E_B(password.getText());
             
-            if (id.getText().isEmpty() | password.getText().isEmpty()  ) {
+            if (id.getText().isEmpty()  |id.getText().equals("Employee id")
+               |password.getText().isEmpty()  |password.getText().equals("Employee password")){
+              
                 
                 JOptionPane.showMessageDialog(null, "There are empty fields");
             }
             else{
                 
-            if ((user & pass )& pass) {
+            if (user & pass ) {
                 new Control().show();
                 this.dispose();
             }
-            if (!user & pass) {
+            if (!user && pas) {
                 JOptionPane.showMessageDialog(null, "Username is wrong, try again");
             }
             if (!pass && user) {
                 JOptionPane.showMessageDialog(null, "Password is wrong, try again");
             }
-            if (!user && !pass) {
+            if (!user && !pas) {
                 JOptionPane.showMessageDialog(null, "Username & Password  is wrong, try again");
 
             }
@@ -362,6 +371,15 @@ public class Login_Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordKeyPressed
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+
+   SignIn();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1MouseClicked
+                                  
+
     /**
      * @param args the command line arguments
      */
@@ -369,6 +387,7 @@ public class Login_Interface extends javax.swing.JFrame {
             public  void run() {
                Login_Interface l = new Login_Interface();
                l.setVisible(true);
+       
                l.jPanel3.add(id);
                id.setBounds(119, 134, 165, 16);
          id.setBackground(new java.awt.Color(184, 79, 84));

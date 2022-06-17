@@ -1,0 +1,1 @@
+name=Ahmed, id=123456789, phone_number=05987456, Total Salary=595.6600000000001, Address=jenen, Email=ahmed@gmail.com, basicSalary=450.6, liveExpensive=45.06, MangerBonus100.0, Password=123456

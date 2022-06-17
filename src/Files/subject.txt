@@ -2,3 +2,11 @@ Subject_Name=math
  The teacher name who teaches it =[Ali]
  The students who study it =[Ali, sameer]
 ====================================================
+Subject_Name=sinse
+ The teacher name who teaches it =[sameer, yosef]
+ The students who study it =[sameer, yosef, Ali]
+====================================================
+Subject_Name=hello
+ The teacher name who teaches it =[Ali, Ali]
+ The students who study it =[Ali, Ali, Ali]
+====================================================

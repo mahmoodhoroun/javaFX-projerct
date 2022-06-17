@@ -7,7 +7,10 @@ package gui;
 
 import code.School;
 import code.file;
+import static gui.Login_Interface.id;
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.VK_ENTER;
 import java.io.FileNotFoundException;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.scene.input.KeyCode.T;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -137,7 +141,13 @@ public class fram extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(51, 0, 51));
 
         Sub_name.setBackground(new java.awt.Color(204, 255, 204));
+        Sub_name.setFont(new java.awt.Font("Lucida Bright", 1, 15)); // NOI18N
         Sub_name.setBorder(null);
+        Sub_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Sub_nameMouseClicked(evt);
+            }
+        });
         Sub_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Sub_nameActionPerformed(evt);
@@ -326,6 +336,11 @@ public class fram extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        A2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                A2ValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(A2);
 
         jPanel5.setBackground(new java.awt.Color(153, 0, 153));
@@ -455,6 +470,7 @@ public class fram extends javax.swing.JFrame {
                 jPanel2.add(x);
                 jPanel2.setLayout(null);
                 x.setBounds(20, h, 100, 30);
+                x.setFont(new Font("Lucida Bright", 1, 14));
                 S.add(x);
                 x.setVisible(false);
                 h += 35;
@@ -486,6 +502,8 @@ public class fram extends javax.swing.JFrame {
                     }
                 });
             }
+           
+
         }
     }//GEN-LAST:event_num_sKeyPressed
 
@@ -516,6 +534,7 @@ public class fram extends javax.swing.JFrame {
                 jPanel1.setLayout(null);
                 x.setBounds(20, h, 100, 30);
                 x.setVisible(false);
+                x.setFont(new Font("Lucida Bright", 1, 14));
                 T.add(x);
                 h += 35;
 
@@ -567,10 +586,7 @@ public class fram extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-          
-        
-        
-            
+
         ArrayList<String> student = new ArrayList<>();
         ArrayList<String> teasher = new ArrayList<>();
         for (int i = 0; i < Integer.parseInt(num_s.getText()); i++) {
@@ -587,7 +603,7 @@ public class fram extends javax.swing.JFrame {
         }
         this.dispose();
         new Control().setVisible(true);
-        
+
 
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -633,6 +649,8 @@ public class fram extends javax.swing.JFrame {
         }
 
         A2.setFont(new Font("Serif", Font.BOLD, 17));
+
+
     }//GEN-LAST:event_showMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -657,8 +675,15 @@ public class fram extends javax.swing.JFrame {
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         this.dispose();
         new Control().setVisible(true);
-        
+
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void A2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_A2ValueChanged
+             
+    }//GEN-LAST:event_A2ValueChanged
+
+    private void Sub_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Sub_nameMouseClicked
+    }//GEN-LAST:event_Sub_nameMouseClicked
 
     /**
      * @param args the command line arguments
